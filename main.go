@@ -1,6 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"bufio"
+	"os"
+	"os/exec"
+	"strings"
+	)
 
 func main() {
 	fmt.Println("pokedex >")
