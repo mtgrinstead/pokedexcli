@@ -1,18 +1,20 @@
 package main
 
 import (
-    "log"
-    "fmt"
-    "github.com/mtgrinstead/pokedexcli/internal/pokeapi"
+	"time"
+
+	"github.com/mtgrinstead/pokedexcli/internal/pokeapi"
 )
 
-func main() {
-    //startRepl()
-    pokeapiClient := pokeapi.NewClient()
+type config struct {
+    pokeapiClient           pokeapi.Client
+    nextLocationAreaURL     *string
+    prevLocationAreaURL *string
+}
 
-    resp, err := pokeapiClient.ListLocationAreas()
-    if err != nil {
-        log.Fatal(err)
+func main() {
+    cfg := config{
+      pokeapiClient: pokeapi.NewClient(time.Hour),  
     }
-    fmt.Println(resp)
+    startRepl(&cfg)
 }
